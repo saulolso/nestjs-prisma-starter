@@ -8,10 +8,6 @@ generator client {
   // previewFeatures = []
 }
 
-generator dbml {
-  provider = "prisma-dbml-generator"
-}
-
 model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
