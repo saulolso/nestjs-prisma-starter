@@ -13,7 +13,6 @@ async function main() {
       email: 'lisa@simpson.com',
       firstname: 'Lisa',
       lastname: 'Simpson',
-      password: '$2b$10$EpRnTzVlqHNP0.fUbXUwSOyuiXe/QLSUG6xNekdHgTGmrpHEfIoxm', // secret42
       role: 'USER',
       posts: {
         create: {
@@ -30,7 +29,6 @@ async function main() {
       firstname: 'Bart',
       lastname: 'Simpson',
       role: 'ADMIN',
-      password: '$2b$10$EpRnTzVlqHNP0.fUbXUwSOyuiXe/QLSUG6xNekdHgTGmrpHEfIoxm', // secret42
       posts: {
         create: [
           {

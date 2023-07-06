@@ -10,11 +10,8 @@ import {
 } from '@nestjs/graphql';
 import { findManyCursorConnection } from '@devoxa/prisma-relay-cursor-connection';
 import { PubSub } from 'graphql-subscriptions';
-import { UseGuards } from '@nestjs/common';
 import { PaginationArgs } from 'src/common/pagination/pagination.args';
-import { UserEntity } from 'src/common/decorators/user.decorator';
-import { User } from 'src/users/models/user.model';
-import { GqlAuthGuard } from 'src/auth/gql-auth.guard';
+import { User } from './models/user.model';
 import { PostIdArgs } from './args/post-id.args';
 import { UserIdArgs } from './args/user-id.args';
 import { Post } from './models/post.model';
@@ -33,18 +30,15 @@ export class PostsResolver {
     return pubSub.asyncIterator('postCreated');
   }
 
-  @UseGuards(GqlAuthGuard)
   @Mutation(() => Post)
-  async createPost(
-    @UserEntity() user: User,
-    @Args('data') data: CreatePostInput
-  ) {
+  async createPost(@Args('data') data: CreatePostInput) {
     const newPost = this.prisma.post.create({
       data: {
         published: true,
         title: data.title,
         content: data.content,
-        authorId: user.id,
+        // TODO check here
+        // authorId: user.id,
       },
     });
     pubSub.publish('postCreated', { postCreated: newPost });
