@@ -127,5 +127,9 @@
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
+  },
+  "volta": {
+    "node": "16.16.0",
+    "yarn": "1.22.19"
   }
 }
