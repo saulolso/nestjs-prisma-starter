@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PostsModule } from 'src/posts/posts.module';
 import config from 'src/common/configs/config';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import config from 'src/common/configs/config';
     }),
 
     PostsModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,7 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { BaseModel } from 'src/common/models/base.model';
 
-export class Post extends BaseModel {
+export class CreatePostDto {
   @ApiProperty()
   title: string;
   @ApiProperty()
