@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-  prisma-migrate:
-    container_name: prisma-migrate
+  prisma-db-push:
+    container_name: prisma-db-push
     build:
       context: prisma
       dockerfile: Dockerfile
