@@ -1,0 +1,55 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+
+
+### List users
+GET http://{{host}}/users/
+
+
+
+### Find user
+# @name findUser
+# @prompt userId
+GET http://{{host}}/users/{{userId}}
+
+
+
+### Create user
+# @prompt email
+# @prompt firstname
+# @prompt lastname
+# @prompt role ADMIN or USER
+# @prompt postsIds 
+POST http://{{host}}/users/
+Content-Type: application/json
+
+{
+    "email": "{{email}}",
+    "firstname": "{{firstname}}",
+    "lastname": "{{lastname}}",
+    "role": "{{role}}",
+    "posts": {{postsIds}}
+}
+
+
+
+
+### Update user
+@userId = {{findUser.response.body.$.id}}
+# @prompt firstname
+# @prompt lastname
+# @prompt role ADMIN or USER
+PATCH http://{{host}}/users/{{userId}}
+Content-Type: application/json
+
+{
+    "firstname": "{{firstname}}",
+    "lastname": "{{lastname}}",
+    "role": "{{role}}"
+}
+
+
+### Delete user
+# @prompt userId
+DELETE http://{{host}}/users/{{userId}}

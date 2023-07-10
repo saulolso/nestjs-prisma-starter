@@ -1,0 +1,51 @@
+### List posts
+GET http://{{host}}/posts/
+
+
+
+### Find post
+# @name findPost
+# @prompt postId
+GET http://{{host}}/posts/{{postId}}
+
+
+
+
+### Create posts
+# @prompt title
+# @prompt content
+# @prompt published must be true or false
+# @prompt authorId
+POST http://{{host}}/posts/
+Content-Type: application/json
+
+{
+    "title": "{{title}}",
+    "content": "{{content}}",
+    "published": {{published}},
+    "authorId": "{{authorId}}"
+}
+
+
+
+
+### Update posts
+@postId = {{findPost.response.body.$.id}}
+@authorId = {{findPost.response.body.$.authorId}}
+# @prompt title
+# @prompt content
+# @prompt published must be true or false
+PATCH http://{{host}}/posts/{{postId}}
+Content-Type: application/json
+
+{
+    "title": "{{title}}",
+    "content": "{{content}}",
+    "published": {{published}},
+    "authorId": "{{authorId}}"
+}
+
+
+### Delete post
+# @prompt postId
+DELETE http://{{host}}/posts/{{postId}}
