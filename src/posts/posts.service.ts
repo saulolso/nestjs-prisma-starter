@@ -20,7 +20,6 @@ export class PostService {
   }
 
   update(id: string, updatePostDto: UpdatePostDto) {
-    console.log('here,' + updatePostDto);
     return this.prisma.post.update({
       where: { id },
       data: updatePostDto,
@@ -30,15 +29,3 @@ export class PostService {
     return this.prisma.post.delete({ where: { id } });
   }
 }
-
-// @Injectable()
-// export class ParseObjectIdPipe implements PipeTransform<any, ObjectId> {
-//   public transform(value: any): ObjectId {
-//     try {
-//       const transformedObjectId: ObjectId = ObjectId.createFromHexString(value);
-//       return transformedObjectId;
-//     } catch (error) {
-//       throw new BadRequestException('Validation failed (ObjectId is expected)');
-//     }
-//   }
-// }
