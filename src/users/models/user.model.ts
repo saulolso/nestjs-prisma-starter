@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 
 import { IsEmail } from 'class-validator';
-import { Post } from '../../posts/models/post.model';
 import { BaseModel } from 'src/common/models/base.model';
 import { Role } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
