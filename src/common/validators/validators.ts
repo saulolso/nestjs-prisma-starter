@@ -1,11 +1,11 @@
 import { BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
-import { ObjectId } from 'mongodb';
+import ObjectID from 'bson-objectid';
 
 @Injectable()
-export class ParseObjectIdPipe implements PipeTransform<any, ObjectId> {
-  public transform(value: any): ObjectId {
+export class ParseObjectIdPipe implements PipeTransform<any, ObjectID> {
+  public transform(value: any): ObjectID {
     try {
-      const transformedObjectId: ObjectId = ObjectId.createFromHexString(value);
+      const transformedObjectId: ObjectID = ObjectID.createFromHexString(value);
       return transformedObjectId;
     } catch (error) {
       throw new BadRequestException('Validation failed (ObjectId is expected)');
