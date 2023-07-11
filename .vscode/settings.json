@@ -3,7 +3,7 @@
         "$shared": {
         },
         "local": {
-            "host": "localhost:3000"
+            "host": "localhost:3000/v1"
         },
         "production": {
         }
