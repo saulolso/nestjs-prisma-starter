@@ -46,7 +46,8 @@
     "docker:seed": "docker exec -it nest-api yarn seed",
     "docker": "docker-compose up -d",
     "docker:build": "docker-compose build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "check-branch-name": "chmod 755 ./.husky/check_branch_naming.sh && sh ./.husky/check_branch_naming.sh"
   },
   "dependencies": {
     "@nestjs/common": "10.0.5",
