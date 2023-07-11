@@ -7,7 +7,7 @@ export class ParseObjectIdPipe implements PipeTransform<any, ObjectID> {
     try {
       const transformedObjectId: ObjectID = ObjectID.createFromHexString(value);
       return transformedObjectId;
-    } catch (error) {
+    } catch {
       throw new BadRequestException('Validation failed (ObjectId is expected)');
     }
   }
