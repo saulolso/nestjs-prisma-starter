@@ -1,4 +1,4 @@
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -15,6 +15,12 @@ async function bootstrap() {
 
   // Validation
   app.useGlobalPipes(new ValidationPipe());
+
+  //Enable api versioning
+  app.enableVersioning({
+    defaultVersion: '1',
+    type: VersioningType.URI,
+  });
 
   // enable shutdown hook
   const prismaService: PrismaService = app.get(PrismaService);
