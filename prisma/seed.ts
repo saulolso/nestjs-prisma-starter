@@ -1,6 +1,22 @@
 import { PrismaClient } from '@prisma/client';
+import { faker } from '@faker-js/faker';
 
 const prisma = new PrismaClient();
+
+function createRandomPost() {
+  return {
+    title: faker.lorem.sentence(),
+    content: faker.lorem.paragraphs(),
+    published: faker.datatype.boolean(),
+  };
+}
+
+function createRandomPostArray(length = 50)  {
+  return [...Array(length)].map((_, i) => {
+    return createRandomPost();
+  });
+}
+
 
 async function main() {
   await prisma.user.deleteMany();
@@ -15,11 +31,7 @@ async function main() {
       lastname: 'Simpson',
       role: 'USER',
       posts: {
-        create: {
-          title: 'Join us for Prisma Day 2019 in Berlin',
-          content: 'https://www.prisma.io/day/',
-          published: true,
-        },
+        create: createRandomPostArray(),
       },
     },
   });
@@ -30,18 +42,7 @@ async function main() {
       lastname: 'Simpson',
       role: 'ADMIN',
       posts: {
-        create: [
-          {
-            title: 'Subscribe to GraphQL Weekly for community news',
-            content: 'https://graphqlweekly.com/',
-            published: true,
-          },
-          {
-            title: 'Follow Prisma on Twitter',
-            content: 'https://twitter.com/prisma',
-            published: false,
-          },
-        ],
+        create: createRandomPostArray(),
       },
     },
   });
