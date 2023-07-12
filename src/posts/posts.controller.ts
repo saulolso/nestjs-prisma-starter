@@ -11,8 +11,8 @@ import {
 import { PostService } from './posts.service';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { Post as PostModel } from './models/post.model';
-import { CreatePostDto } from './dto/createPost.dto';
-import { UpdatePostDto } from './dto/updatePostDto.dto';
+import { CreatePostDto } from './dto/create-post.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
 import { ParseObjectIdPipe } from 'src/common/validators/validators';
 
 @Controller('posts')

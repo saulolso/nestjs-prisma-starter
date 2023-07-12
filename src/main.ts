@@ -54,4 +54,6 @@ async function bootstrap() {
 
   await app.listen(process.env.PORT || nestConfig?.port || 3000);
 }
+
+// eslint-disable-next-line unicorn/prefer-top-level-await
 bootstrap();
