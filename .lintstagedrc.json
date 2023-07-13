@@ -1,0 +1,12 @@
+{
+    "*.ts": [
+      "prettier --check",
+      "eslint --max-warnings=0",
+      "tsc-files --noEmit --pretty"
+    ],
+    "*.html": [
+      "eslint --max-warnings=0",
+      "prettier --check"
+    ],
+    "*.scss": "prettier --check"
+  }
